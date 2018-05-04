@@ -8,7 +8,7 @@
     <h2>{{title}}</h2>
     <div class='fade movies-container'>
       <li class="movies-layout" v-for='(item, index) in subjects'>
-        <router-link :to="{ path: '/Movie/'+index, params: {id:index, title: '',images: ''} }">
+        <router-link :to="{ path: '/Movie/'+ index, params: {id:item.id, idx: index} }">
           <img :src="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <p class="letter">
@@ -16,7 +16,6 @@
           <span>评分 {{item.rating.average}}</span>
         </p>
       </li>
-
     </div>
     <!-- <input type="text" v-model='codeMa' @keyup.enter='checkCodeMa'>
     <input type="button" class="code-style" @click='createCode' v-model='checkCode'> -->
