@@ -27,14 +27,12 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      '$':'jquery'
+      '@': resolve('src')
     }
   },
   plugins:[
   	new webpack.ProvidePlugin({
-  		$:"jquery",
-  		jquery:"jquery"
+
   	})
   ],
   module: {
