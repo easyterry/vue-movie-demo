@@ -5,7 +5,7 @@
     <div class="movie-box" v-for='item in subjects'>
       <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       <span>{{item.title}}</span>
-      <span>评分 {{item.rating.average}}</span>
+      <span>评分 {{item.rating.average.toFixed(1)}}</span>
     </div>
   </div>
 </div>

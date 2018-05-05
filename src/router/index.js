@@ -24,6 +24,7 @@ export default new Router({
       path: '/Main',
       component: Main
     }, {
+      name:'Movie',
       path: '/Movie/:id',
       component: Movie
     }]

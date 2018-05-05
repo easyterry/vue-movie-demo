@@ -8,12 +8,13 @@
     <h2>{{title}}</h2>
     <div class='fade movies-container'>
       <li class="movies-layout" v-for='(item, index) in subjects'>
-        <router-link :to="{ path: '/Movie/'+ index, params: {id:item.id, idx: index} }">
+        <router-link :to="{ name:'Movie', params: {id:index} }">
           <img :src="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <p class="letter">
           <span>{{item.title}}</span>
-          <span>评分 {{item.rating.average}}</span>
+          <span>评分 {{item.rating.average.toFixed(1)}}</span>
+          <stars-num></stars-num>
         </p>
       </li>
     </div>
@@ -34,10 +35,12 @@
 
 <script>
 import HomeSwiper from '@/components/Swiper'
+import StarsNum from '@/components/Stars'
 export default {
   name: 'HelloWorld',
   components: {
-    HomeSwiper
+    HomeSwiper,
+    StarsNum
   },
   data() {
     this.$http.get('/api/movie/in_theaters?count=3').then((res) => {

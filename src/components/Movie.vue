@@ -12,6 +12,7 @@
       <div class="avatar-box" v-for='(item, index) of result' :key='index'>
         <img class="sculpture" :src="imgUrl + result[id].casts[index].avatars.medium.substring( 7 )" alt="">
         <span class="avatar-name">{{result[id].casts[index].name}}</span>
+        <span class="role">演员</span>
       </div>
     </div>
   </div>
@@ -20,6 +21,7 @@
 
 <script>
 export default {
+  name: 'Movie',
   data() {
     this.$http.get('/api/movie/in_theaters?count=3').then(res => {
       var result = res.data.subjects;
@@ -74,8 +76,11 @@ h3 {
 }
 
 .summary {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .summary>span {
@@ -103,5 +108,10 @@ h3 {
   white-space: nowrap;
   font-size: 14px;
   margin-top: 5px;
+}
+
+.role{
+  color: #aaa;
+  font-size: 14px;
 }
 </style>
