@@ -1,10 +1,7 @@
 <template lang="html">
-  <div class="">
+  <div>
     <span class="stars-container">
-      <span class="star-true"></span>
-      <span class="star-true"></span>
-      <span class="star-true"></span>
-      <span class="star-true"></span>
+      <span>{{stars.toString().substring(0, 1)}}</span>
       <span class="star-true"></span>
     </span>
   </div>
@@ -13,10 +10,12 @@
 <script>
 export default {
   name: 'StarsNum',
+  props: ['stars'],
   data() {
-    return {
+    return {}
+  },
+  methods: {
 
-    }
   }
 }
 </script>

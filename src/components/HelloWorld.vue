@@ -14,7 +14,7 @@
         <p class="letter">
           <span>{{item.title}}</span>
           <span>评分 {{item.rating.average.toFixed(1)}}</span>
-          <stars-num></stars-num>
+          <stars-num v-bind:stars.sysnc="item.rating.stars"></stars-num>
         </p>
       </li>
     </div>
@@ -55,8 +55,8 @@ export default {
       subjects: '',
       iptValue: '',
       list: [],
-      checkCode: '',
-      codeMa: ''
+      // checkCode: '',
+      // codeMa: ''
     }
   },
   mounted() {
@@ -145,6 +145,7 @@ a {
 
 .main-container {
   margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .main-container>span {
