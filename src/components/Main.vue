@@ -2,17 +2,22 @@
 <div class="container">
   <h2>即将上映</h2>
   <div class="movies-container">
-    <div class="movie-box" v-for='item in subjects'>
+    <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
       <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       <span>{{item.title}}</span>
       <span>评分 {{item.rating.average.toFixed(1)}}</span>
+      <stars-num v-bind:stars.sysnc="item.rating.stars"></stars-num>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import StarsNum from '@/components/Stars'
 export default {
+  components: {
+    StarsNum
+  },
   data() {
     this.$http.get('/api/movie/coming_soon?count=3').then((res) => {
       this.subjects = res.data.subjects
@@ -54,10 +59,10 @@ span {
 }
 
 .movie-box>span:nth-child(2) {
-	width: 104px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  width: 104px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .movie-box>span:nth-child(3) {

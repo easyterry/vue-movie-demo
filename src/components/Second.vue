@@ -1,18 +1,24 @@
 <template>
 <div class="container">
+  <span></span>
   <h2>Top250</h2>
   <div class="movies-container">
     <div class="movie-box" v-for='item in subjects'>
       <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       <span>{{item.title}}</span>
       <span>评分 {{item.rating.average.toFixed(1)}}</span>
+      <stars-num v-bind:stars.sysnc="item.rating.stars"></stars-num>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import StarsNum from '@/components/Stars'
 export default {
+  components:{
+    StarsNum
+  },
   data() {
     this.$http.get('/api/movie/top250?count=3').then((res) => {
       this.subjects = res.data.subjects;
@@ -33,6 +39,7 @@ img {
 }
 
 h2 {
+  position: relative;
   color: #00a0e9;
 }
 
