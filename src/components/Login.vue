@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <div class="header">
-      <span class="cancel" @click='goBack'>取消</span>
+      <back-icon></back-icon>
       <span class="login-title">登录</span>
       <span></span>
     </div>
@@ -9,7 +9,11 @@
 </template>
 
 <script>
+import BackIcon from '@/components/Back'
 export default {
+  components:{
+    BackIcon
+  },
   name: 'Login',
   data(){
     return{

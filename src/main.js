@@ -5,8 +5,8 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
 import FastClick from 'fastclick'
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios

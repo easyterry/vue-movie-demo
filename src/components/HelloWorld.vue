@@ -14,18 +14,14 @@
         <p class="letter">
           <span>{{item.title}}</span>
           <span>评分 {{item.rating.average.toFixed(1)}}</span>
-          <stars-num v-bind:stars.sysnc="item.rating.stars"></stars-num>
+          <stars-num :stars.sysnc="item.rating.stars"></stars-num>
         </p>
       </li>
     </div>
     <!-- <input type="text" v-model='codeMa' @keyup.enter='checkCodeMa'>
     <input type="button" class="code-style" @click='createCode' v-model='checkCode'> -->
   </div>
-  <!-- <div class="todo">
-    <input type="text" v-model='iptValue'>
-    <button type="button" @click='handleValue'>确定</button>
-    <h3 v-for='(item, index) in list' @click='handleDelete(index)'>{{item}}</h3>
-  </div> -->
+
   <div class="play-container">
     <img src="../assets/icon-play.png" width='25' height="25" v-show='status' @click='status = !status' alt="">
     <img src="../assets/icon-pause.png" width="25" height="25" v-show='!status' @click='status = !status' alt="">

@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-  <span></span>
   <h2>Top250</h2>
   <div class="movies-container">
     <div class="movie-box" v-for='item in subjects'>
@@ -15,9 +14,11 @@
 
 <script>
 import StarsNum from '@/components/Stars'
+import BackIcon from '@/components/Back'
 export default {
   components:{
-    StarsNum
+    StarsNum,
+    BackIcon,
   },
   data() {
     this.$http.get('/api/movie/top250?count=3').then((res) => {
@@ -48,6 +49,10 @@ span {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
+}
+
+.container{
+  position: relative;
 }
 
 .movies-container {
