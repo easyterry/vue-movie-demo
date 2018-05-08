@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Test from '@/components/Index'
+import Index from '@/components/Index'
 import Main from '@/components/Main'
 import Second from '@/components/Second'
 import HelloWorld from '@/components/HelloWorld'
@@ -13,7 +13,7 @@ export default new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    component: 'Index',
+    component: Index,
     children: [{
       path: '/',
       component: HelloWorld
