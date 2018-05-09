@@ -8,7 +8,7 @@
     <h2>{{title}}</h2>
     <div class='fade movies-container'>
       <li class="movies-layout" v-for='(item, index) in subjects'>
-        <router-link :to="{ name:'Movie', params: {id:index} }">
+        <router-link :to="{ name:'Movie', params: {id: index, result: subjects} }">
           <img :src="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <p class="letter">

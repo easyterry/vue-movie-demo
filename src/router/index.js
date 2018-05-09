@@ -24,13 +24,16 @@ export default new Router({
       path: '/Main',
       component: Main
     }, {
-      name:'Movie',
+      name: 'Movie',
       path: '/Movie/:id',
       component: Movie
     }]
   }, {
-    name:'Login',
+    name: 'Login',
     path: '/Login',
-    component: Login
+    component: Login,
+    meta: {
+      keepAlive: true
+    }
   }]
 })

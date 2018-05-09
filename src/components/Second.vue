@@ -2,8 +2,11 @@
 <div class="container">
   <h2>Top250</h2>
   <div class="movies-container">
-    <div class="movie-box" v-for='item in subjects'>
-      <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
+    <router-link :to="{ name: 'Login' }" style="position:absolute;top:0;left:15px;">登录</router-link>
+    <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
+      <router-link :to="{ name: 'Movie', params: {id:index, result:subjects} }">
+        <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
+      </router-link>
       <span>{{item.title}}</span>
       <span>评分 {{item.rating.average.toFixed(1)}}</span>
       <stars-num v-bind:stars.sysnc="item.rating.stars"></stars-num>
@@ -18,7 +21,7 @@ import BackIcon from '@/components/Back'
 export default {
   components: {
     StarsNum,
-    BackIcon,
+    BackIcon
   },
   data() {
     this.$http.get('/api/movie/top250?count=3').then((res) => {
@@ -33,6 +36,10 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 img {
   width: 104px;
   height: 162px;

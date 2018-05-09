@@ -3,6 +3,7 @@
     <div class="header">
       <back-icon></back-icon>
       <span class="login-title">登录</span>
+      <input type="text" name="" value="">
       <span></span>
     </div>
   </div>
