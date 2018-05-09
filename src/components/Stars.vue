@@ -16,10 +16,10 @@ export default {
   props: ['stars'],
   data() {
     return {
-      starsArr:''
+      starsArr: ''
     }
   },
-  mounted(){
+  mounted() {
     this.starsArr = this.starsComponent(this.stars)
   },
   methods: {

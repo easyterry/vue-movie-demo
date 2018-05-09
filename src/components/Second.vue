@@ -16,7 +16,7 @@
 import StarsNum from '@/components/Stars'
 import BackIcon from '@/components/Back'
 export default {
-  components:{
+  components: {
     StarsNum,
     BackIcon,
   },
@@ -46,12 +46,13 @@ h2 {
 
 span {
   display: block;
+  margin: 0 auto;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
 }
 
-.container{
+.container {
   position: relative;
 }
 
@@ -59,6 +60,8 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  width: 100%;
+  height: auto;
 }
 
 .movie-box {
@@ -67,11 +70,11 @@ span {
 }
 
 .movie-box>span:nth-child(2) {
-	width: 104px;
+  width: 104px;
   margin-top: 10px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .movie-box>span:nth-child(3) {
