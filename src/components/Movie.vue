@@ -25,8 +25,6 @@ export default {
   data() {
     this.$http.get('../../static/data.json').then(res => {
       console.log(res.data.result);
-      console.log(this.result);
-      console.log(this.id);
       var content = res.data;
       this.content = content;
     })
