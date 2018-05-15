@@ -23,10 +23,10 @@
 export default {
   name: 'Movie',
   data() {
-    this.$http.get('/api/movie/in_theaters?count=3').then(res => {
-      var result = res.data.subjects;
-      this.result = result;
-    });
+    // this.$http.get('/api/movie/in_theaters?count=3').then(res => {
+    //   var result = res.data.subjects;
+    //   this.result = result;
+    // });
     this.$http.get('../../static/data.json').then(res => {
       console.log(res.data.result);
       var content = res.data;
@@ -34,7 +34,7 @@ export default {
     })
     return {
       id: this.$route.params.id,
-      result: '',
+      result: this.$route.params.result,
       content: '',
       imgUrl: 'https://images.weserv.nl/?url='
     }
