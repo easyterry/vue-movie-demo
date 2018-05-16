@@ -1,16 +1,15 @@
 <template>
-<div v-if='result&&content' class="">
+<div v-if='result'>
   <h2>{{result[id].title}}</h2>
   <img :src="imgUrl + result[id].images.small.substring( 7 )" alt="">
   <div class="summary">
     <span class="intro-title">{{result[id].title}}剧情简介</span>
-    <span class='content-style'>{{content.result[id].content1}}</span>
   </div>
   <div>
     <span class="intro-title">影人</span>
     <div class="avatars-info">
-      <div class="avatar-box" v-for='(item, index) of result' :key='index'>
-        <img class="sculpture" :src="imgUrl + result[id].casts[index].avatars.medium.substring( 7 )" alt="">
+      <div class="avatar-box" v-for='(item, index) of result' :key='index' v-if='index <= 2'>
+       <img class="sculpture" :src="imgUrl + result[id].casts[index].avatars.medium.substring( 7 )" alt="">
         <span class="avatar-name">{{result[id].casts[index].name}}</span>
         <span class="role">演员</span>
       </div>
@@ -32,20 +31,19 @@
 export default {
   name: 'Movie',
   data() {
-    this.$http.get('../../static/data.json').then(res => {
-      console.log(res.data.result);
-      var content = res.data;
-      this.content = content;
-    })
     return {
       id: this.$route.params.id,
       result: this.$route.params.result,
-      content: '',
-      imgUrl: 'https://images.weserv.nl/?url='
+      imgUrl: 'https://images.weserv.nl/?url=',
     }
   },
   mounted() {
-
+    this.alertMsg();
+  },
+  methods: {
+    alertMsg() {
+      console.log(this.$route.params.result);
+    }
   }
 }
 </script>

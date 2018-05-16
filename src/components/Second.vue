@@ -24,7 +24,7 @@ export default {
     BackIcon
   },
   data() {
-    this.$http.get('/api/movie/top250?count=3').then((res) => {
+    this.$http.get('/api/movie/top250?count=9').then((res) => {
       this.subjects = res.data.subjects;
       console.log(res);
     })
@@ -68,13 +68,13 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
-  height: auto;
+  flex-wrap: wrap;
 }
 
 .movie-box {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .movie-box>span:nth-child(2) {

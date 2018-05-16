@@ -21,7 +21,7 @@ export default {
     StarsNum
   },
   data() {
-    this.$http.get('/api/movie/coming_soon?count=3').then((res) => {
+    this.$http.get('/api/movie/coming_soon?count=9').then((res) => {
       this.subjects = res.data.subjects
     })
     return {
@@ -53,11 +53,13 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .movie-box {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .movie-box>span:nth-child(2) {

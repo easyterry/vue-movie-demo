@@ -7,16 +7,14 @@
   <div class="main-container">
     <h2>{{title}}</h2>
     <div class='fade movies-container'>
-      <li class="movies-layout" v-for='(item, index) in subjects'>
+      <div class="movies-layout" v-for='(item, index) in subjects' :key='index'>
         <router-link :to="{ name:'Movie', params: {id: index, result: subjects} }">
           <img :src="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
-        <p class="letter">
-          <span>{{item.title}}</span>
-          <span>评分 {{item.rating.average.toFixed(1)}}</span>
+          <span class="intro-title">{{item.title}}</span>
+          <span class="rating">评分 {{item.rating.average.toFixed(1)}}</span>
           <stars-num :stars.sysnc="item.rating.stars"></stars-num>
-        </p>
-      </li>
+      </div>
     </div>
     <!-- <input type="text" v-model='codeMa' @keyup.enter='checkCodeMa'>
     <input type="button" class="code-style" @click='createCode' v-model='checkCode'> -->
@@ -39,7 +37,7 @@ export default {
     StarsNum
   },
   data() {
-    this.$http.get('/api/movie/in_theaters?count=3').then((res) => {
+    this.$http.get('/api/movie/in_theaters?count=9').then((res) => {
       var result = res.data;
       this.subjects = result.subjects;
       console.log(result);
@@ -119,6 +117,19 @@ a {
   color: #42b983;
 }
 
+.intro-title{
+  display: inline-block;
+  width: 104px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.rating{
+  color: #e09015;
+  font-size: 14px;
+}
+
 .search-ipt {
   display: inline-block;
   padding-left: 30px;
@@ -165,12 +176,14 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .movies-layout {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .letter>span:nth-child(1) {
