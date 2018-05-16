@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <div class="header">
-      <back-icon></back-icon>
+      <back-icon style="margin-top:10px;"></back-icon>
       <span class="login-title">登录</span>
       <input type="text" name="" value="">
       <span></span>
@@ -12,27 +12,30 @@
 <script>
 import BackIcon from '@/components/Back'
 export default {
-  components:{
+  name: 'Login',
+  components: {
     BackIcon
   },
-  name: 'Login',
-  data(){
-    return{
+  data() {
+    return {
 
     }
   },
-  methods:{
-    goBack(){
-      this.$router.go(-1);
-    }
+  methods: {
+
   }
 }
 </script>
 
 <style lang="css" scoped>
+  input{
+    display: inline-block;
+    margin-top: 10px;
+  }
+
   .header{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
   }

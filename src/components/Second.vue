@@ -37,6 +37,7 @@ export default {
 
 <style scoped>
 a {
+  color: #00a0e9;
   text-decoration: none;
 }
 

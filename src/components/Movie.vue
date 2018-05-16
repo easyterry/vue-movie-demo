@@ -16,6 +16,15 @@
       </div>
     </div>
   </div>
+  <div>
+    <span class="intro-title">周边</span>
+    <router-link :to="{ name: 'Shop' }">
+      <div class="product-box">
+        <img src="" alt="">
+        <span></span>
+      </div>
+    </router-link>
+  </div>
 </div>
 </template>
 
@@ -47,6 +56,10 @@ h3 {
   font-weight:
 }
 
+a {
+  text-decoration: none;
+}
+
 .content-style {
   line-height: 1.5;
   text-align: left;
@@ -58,6 +71,7 @@ h3 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .avatar-box {
@@ -106,7 +120,7 @@ h3 {
   margin-top: 5px;
 }
 
-.role{
+.role {
   color: #aaa;
   font-size: 14px;
 }

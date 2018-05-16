@@ -26,7 +26,7 @@ export default {
         imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/272344.jpg'
       },{
         id:'002',
-        imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/273733.jpg'
+        imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/277409.jpg'
       },{
         id:'003',
         imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/273112.jpg'
