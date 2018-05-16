@@ -12,6 +12,16 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios
 Vue.use(VueAwesomeSwiper)
 FastClick.attach(document.body);
+
+if(process.env.NODE_ENV == 'production'){
+    // 部署服务调用正式地址
+    axios.defaults.baseURL = 'http://api.douban.com/v2'
+    // axios.defaults.headers.get['Content-Type'] = 'application/json';
+}else{
+    // 开发测试地址
+    axios.defaults.baseURL = 'http://localhost:8080'
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

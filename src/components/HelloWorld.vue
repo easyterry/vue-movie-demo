@@ -11,9 +11,9 @@
         <router-link :to="{ name:'Movie', params: {id: index, result: subjects} }">
           <img :src="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
-          <span class="intro-title">{{item.title}}</span>
-          <span class="rating">评分 {{item.rating.average.toFixed(1)}}</span>
-          <stars-num :stars.sysnc="item.rating.stars"></stars-num>
+        <span class="intro-title">{{item.title}}</span>
+        <span class="rating">评分 {{item.rating.average.toFixed(1)}}</span>
+        <stars-num :stars.sysnc="item.rating.stars"></stars-num>
       </div>
     </div>
     <!-- <input type="text" v-model='codeMa' @keyup.enter='checkCodeMa'>
@@ -37,11 +37,18 @@ export default {
     StarsNum
   },
   data() {
-    this.$http.get('/api/movie/in_theaters?count=9').then((res) => {
+    this.$http.get('api/movie/in_theaters?count=9').then((res) => {
       var result = res.data;
       this.subjects = result.subjects;
       console.log(result);
     })
+    // this.$http.get('/movie/in_theaters?count=9', {}, {
+    //   headers: {},
+    //   emulateJSON: true
+    // }).then((response) => {
+    //   this.subjects = response.data.subjects;
+    //   console.log(this.subjects);
+    // });
     return {
       msg: '',
       status: true,
@@ -117,7 +124,7 @@ a {
   color: #42b983;
 }
 
-.intro-title{
+.intro-title {
   display: inline-block;
   width: 104px;
   text-overflow: ellipsis;
@@ -125,7 +132,7 @@ a {
   white-space: nowrap;
 }
 
-.rating{
+.rating {
   color: #e09015;
   font-size: 14px;
 }
