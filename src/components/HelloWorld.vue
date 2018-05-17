@@ -19,7 +19,6 @@
     <!-- <input type="text" v-model='codeMa' @keyup.enter='checkCodeMa'>
     <input type="button" class="code-style" @click='createCode' v-model='checkCode'> -->
   </div>
-
   <div class="play-container">
     <img src="../assets/icon-play.png" width='25' height="25" v-show='status' @click='status = !status' alt="">
     <img src="../assets/icon-pause.png" width="25" height="25" v-show='!status' @click='status = !status' alt="">
@@ -42,13 +41,6 @@ export default {
       this.subjects = result.subjects;
       console.log(result);
     })
-    // this.$http.get('/movie/in_theaters?count=9', {}, {
-    //   headers: {},
-    //   emulateJSON: true
-    // }).then((response) => {
-    //   this.subjects = response.data.subjects;
-    //   console.log(this.subjects);
-    // });
     return {
       msg: '',
       status: true,
@@ -124,6 +116,10 @@ a {
   color: #42b983;
 }
 
+.hello {
+  overflow: hidden;
+}
+
 .intro-title {
   display: inline-block;
   width: 104px;
@@ -159,7 +155,6 @@ a {
 
 .main-container {
   margin-top: 30px;
-  margin-bottom: 50px;
 }
 
 .main-container>span {

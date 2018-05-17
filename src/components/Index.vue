@@ -16,7 +16,6 @@
 
 <script type="text/javascript">
 
-
 </script>
 
 <style scoped>
@@ -39,12 +38,11 @@ a {
 
 .fade-enter-active,
 .fade-leave-active {
-	transition: .5s;
+  transition: .5s;
 }
 
 .fade-enter,
-.fade-leave-to
-{
-	opacity: 0;
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
