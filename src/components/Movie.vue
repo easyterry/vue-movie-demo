@@ -38,88 +38,64 @@ export default {
     }
   },
   mounted() {
-    this.alertMsg();
+    this.alertMsg()
   },
   methods: {
     alertMsg() {
-      console.log(this.$route.params.result);
+      console.log(this.$route.params.result)
     }
   }
 }
 </script>
 
-<style scoped>
-h3 {
-  color: #007722;
-  font-weight:
-}
-
-a {
-  text-decoration: none;
-}
-
-.content-style {
-  line-height: 1.5;
-  text-align: left;
-  font-size: 14px;
-}
-
-.avatars-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.avatar-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.sculpture {
-  width: 75px;
-  height: 107px;
-  margin-top: 15px;
-}
-
-.summary {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.summary>span {
-  margin-top: 15px;
-}
-
-.summary>span:nth-child(2) {
-  margin-left: 5px;
-  margin-bottom: 15px;
-}
-
-.intro-title {
-  display: block;
-  position: relative;
-  margin-left: 5px;
-  line-height: 25px;
-  text-align: left;
-  color: #aaa;
-}
-
-.avatar-name {
-  width: 76px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.role {
-  color: #aaa;
-  font-size: 14px;
-}
+<style lang="sass" scoped>
+h3
+  color: #007722
+a
+  text-decoration: none
+.content-style
+  line-height: 1.5
+  text-align: left
+  font-size: 14px
+.avatars-info
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  margin-bottom: 10px
+.avatar-box
+  display: flex
+  flex-direction: column
+.sculpture
+  width: 75px
+  height: 107px
+  margin-top: 15px
+.summary
+  width: 100%
+  display: flex
+  flex-direction: column
+  margin: 0 auto
+  text-align: center
+.summary>span
+  margin-top: 15px
+.summary>span:nth-child(2)
+  margin-left: 5px
+  margin-bottom: 15px
+.intro-title
+  display: block
+  position: relative
+  margin-left: 5px
+  line-height: 25px
+  text-align: left
+  color: #aaa
+.avatar-name
+  width: 76px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  font-size: 14px
+  margin-top: 5px
+.role
+  color: #aaa
+  font-size: 14px
 </style>

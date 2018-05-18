@@ -36,17 +36,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-.wrapper >>> .swiper-pagination-bullet-active{
-  background: #fff;
-}
-
-.swiper-box{
-  margin-top: 20px;
-}
-
-img{
-  height: 176px;
-  width: 100%;
-}
+<style lang="sass" scoped>
+.wrapper >>> .swiper-pagination-bullet-active
+  background: #fff
+.swiper-box
+  margin-top: 20px
+img
+  height: 176px
+  width: 100%
 </style>

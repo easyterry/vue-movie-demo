@@ -18,31 +18,23 @@
 
 </script>
 
-<style scoped>
-a {
-  text-decoration: none;
-  color: #999;
-}
-
-.header-box {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-}
-
-.router-link-exact-active {
-  color: #00a0e9;
-}
-
+<style lang="sass" scoped>
+a
+  text-decoration: none
+  color: #999
+.header-box
+  display: flex
+  justify-content: space-around
+  align-items: center
+  width: 100%
+  height: 50px
+.router-link-exact-active
+  color: #00a0e9
 .fade-enter-active,
-.fade-leave-active {
-  transition: .5s;
-}
-
+.fade-leave-active
+  transition: .5s
 .fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
+.fade-leave-to
+  opacity: 0
+
 </style>

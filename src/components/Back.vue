@@ -16,18 +16,13 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-  * {
-   touch-action: none;
-  }
-
-  div{
-    position: absolute;
-    left: 10px;
-    top: 0;
-  }
-
-  i{
-    color: #333;
-  }
+<style lang="sass" scoped>
+  *
+   touch-action: none
+  div
+    position: absolute
+    left: 10px
+    top: 0
+  i
+    color: #333
 </style>
