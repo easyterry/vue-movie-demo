@@ -5,7 +5,7 @@
     <router-link :to="{ name: 'Login' }" class="login">登录</router-link>
     <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
       <router-link :to="{ name: 'Movie', params: {id:index, result:subjects} }">
-        <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
+        <img v-lazy="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       </router-link>
       <span>{{item.title}}</span>
       <span>评分 {{item.rating.average.toFixed(1)}}</span>

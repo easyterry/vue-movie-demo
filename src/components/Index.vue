@@ -11,11 +11,17 @@
       </router-view>
     </transition>
   </div>
+  <footer-bar></footer-bar>
 </div>
 </template>
 
 <script type="text/javascript">
-
+import FooterBar from '@/components/Footer'
+export default{
+  components:{
+    FooterBar,
+  }
+}
 </script>
 
 <style lang="sass" scoped>

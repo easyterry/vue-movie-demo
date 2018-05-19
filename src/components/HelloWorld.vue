@@ -1,27 +1,27 @@
 <template>
 <div class="hello">
   <div class="ipt-container">
-    <input style='display:block' class='search-ipt' type="text" placeholder='搜索'>
+    <i class="iconfont icon-sousuo" @click='linkToMovie(idx, subjects)'></i>
+    <input style='display:block' class='search-ipt' type="text" v-model='query' placeholder='搜索'>
+    <i class="iconfont icon-guanbi" v-show='query' @click='deleteQuery()'></i>
   </div>
+  <p class="hotSearch">热门搜索</p>
+  <ul>
+    <li v-for='(item, index) in subjects' @click='addQuery(item.title, index)'>{{item.title}}</li>
+  </ul>
   <home-swiper></home-swiper>
   <div class="main-container">
     <h2>{{title}}</h2>
     <div class='fade movies-container'>
       <div class="movies-layout" v-for='(item, index) in subjects' :key='index'>
         <router-link :to="{ name:'Movie', params: {id: index, result: subjects} }">
-          <img :src="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
+          <img v-lazy="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <span class="intro-title">{{item.title}}</span>
         <span class="rating">评分 {{item.rating.average.toFixed(1)}}</span>
         <stars-num :stars.sysnc="item.rating.stars"></stars-num>
       </div>
     </div>
-    <!-- <input type="text" v-model='codeMa' @keyup.enter='checkCodeMa'>
-    <input type="button" class="code-style" @click='createCode' v-model='checkCode'> -->
-  </div>
-  <div class="play-container">
-    <img src="../assets/icon-play.png" width='25' height="25" v-show='status' @click='status = !status' alt="">
-    <img src="../assets/icon-pause.png" width="25" height="25" v-show='!status' @click='status = !status' alt="">
   </div>
 </div>
 </template>
@@ -29,11 +29,13 @@
 <script>
 import HomeSwiper from '@/components/Swiper'
 import StarsNum from '@/components/Stars'
+import FooterBar from '@/components/Footer'
 export default {
   name: 'HelloWorld',
   components: {
     HomeSwiper,
-    StarsNum
+    StarsNum,
+    FooterBar,
   },
   data() {
     this.$http.get('api/movie/in_theaters?count=9').then((res) => {
@@ -43,49 +45,39 @@ export default {
     })
     return {
       show: false,
-      status: true,
       title: '正在热映',
       subjects: '',
       iptValue: '',
       list: [],
-      // checkCode: '',
-      // codeMa: ''
+      query: '',
+      idx: null,
     }
   },
   mounted() {
 
   },
   methods: {
-    // createCode() {
-    //   var code = ''
-    //   var codeLength = 4
-    //   var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D',
-    //     'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-    //     'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
-    //   for (var i = 0 i < codeLength i++) {
-    //     var index = Math.floor(Math.random() * 36)
-    //     code += random[index]
-    //   }
-    //   this.checkCode = code
-    // },
-    // checkCodeMa() {
-    //   var upperCode = this.codeMa.toUpperCase()
-    //   if (this.codeMa == '') {
-    //     alert('请输入验证码!')
-    //   } else if (upperCode !== this.checkCode) {
-    //     alert('请输入正确验证码!')
-    //     this.createCode()
-    //     this.codeMa = ''
-    //   } else {
-    //     alert('正确!')
-    //   }
-    // },
-    handleValue() {
-      this.list.push(this.iptValue)
-      this.iptValue = ''
+    addQuery(query, index) {
+      this.query = query
+      this.idx = index
     },
-    handleDelete(index) {
-      this.list.splice(index, 1)
+    deleteQuery() {
+      this.query = ''
+      this.idx = ''
+    },
+    linkToMovie(index, subjects) {
+      console.log(index)
+      if (index == null) {
+        alert('请输入要搜索的内容！')
+      } else {
+        this.$router.push({
+          name: 'Movie',
+          params: {
+            id: index,
+            result: subjects
+          }
+        })
+      }
     }
   }
 }
@@ -100,8 +92,30 @@ h2
   color: #00a0e9
 a
   color: #42b983
+ul
+  padding: 0
+li
+  box-sizing: border-box
+  height: 30px
+  line-height: 30px
+  padding: 0 3px
+  list-style: none
+  display: inline-block
+  border: 1px solid #ffb712
+  border-radius: 3px
+  margin: 3px
+  color: #ffb712
+i
+  &.icon-sousuo
+    font-size: 20px
+  &.icon-guanbi
+    font-size: 14px
 .hello
   overflow: hidden
+.hotSearch
+  font-weight: 600
+  color: #999
+  font-size: 16px
 .intro-title
   display: inline-block
   width: 104px
@@ -116,36 +130,29 @@ a
   font-size: 14px
 .search-ipt
   display: inline-block
-  padding-left: 30px
-  background: #eee
-  border-radius: 5px
   outline: none
   border: none
   height: 30px
   font-size: medium
-  margin: 0 auto
+  margin-left: 10px
   color: #333
+  background: transparent
 .ipt-container
+  box-sizing: border-box
   display: flex
-  justify-content: center
-  width: 100%
+  align-items: center
+  width: 70%
+  margin: 0 auto
   margin-top: 15px
+  padding-left: 10px
+  border-radius: 5px
+  background-color: #eee
 .main-container
   margin-top: 30px
   margin-bottom: 50px
 .main-container>span
   font-size: 20px
   font-weight: 600
-.play-container
-  display: flex
-  justify-content: center
-  align-items: center
-  position: fixed
-  bottom: 0
-  left: 0
-  width: 100%
-  height: 50px
-  background-color: #5dbfec
 .movies-container
   display: flex
   flex-direction: row
