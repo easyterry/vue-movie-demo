@@ -4,9 +4,11 @@
       <back-icon style="margin-top:10px;"></back-icon>
       <div class="login">
         <span class="login-title">登录</span>
-        <input type="text" placeholder='用户名' class=''>
-        <input type="password" placeholder='密码'>
-        <button type="submit" class="login-btn">确认登录</button>
+        <form class="" action="" method="post">
+          <input type="text" placeholder='用户名' class=''>
+          <input type="password" placeholder='密码'>
+          <button type="submit" class="login-btn">确认登录</button>
+        </form>
       </div>
       <span></span>
     </div>

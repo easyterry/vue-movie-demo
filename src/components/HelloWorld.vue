@@ -23,6 +23,7 @@
       </div>
     </div>
   </div>
+  <mask-box></mask-box>
 </div>
 </template>
 
@@ -30,12 +31,14 @@
 import HomeSwiper from '@/components/Swiper'
 import StarsNum from '@/components/Stars'
 import FooterBar from '@/components/Footer'
+import MaskBox from '@/components/MaskBox'
 export default {
   name: 'HelloWorld',
   components: {
     HomeSwiper,
     StarsNum,
     FooterBar,
+    MaskBox,
   },
   data() {
     this.$http.get('api/movie/in_theaters?count=9').then((res) => {
@@ -148,7 +151,7 @@ i
   border-radius: 5px
   background-color: #eee
 .main-container
-  margin-top: 30px
+  margin-top: 20px
   margin-bottom: 50px
 .main-container>span
   font-size: 20px

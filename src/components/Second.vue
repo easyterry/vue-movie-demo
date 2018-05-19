@@ -2,7 +2,6 @@
 <div class="container">
   <h2>Top250</h2>
   <div class="movies-container">
-    <router-link :to="{ name: 'Login' }" class="login">登录</router-link>
     <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
       <router-link :to="{ name: 'Movie', params: {id:index, result:subjects} }">
         <img v-lazy="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
@@ -36,9 +35,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-a
-  color: #00a0e9
-  text-decoration: none
 img
   width: 104px
   height: 162px
