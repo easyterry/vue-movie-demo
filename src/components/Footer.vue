@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="footer">
-    <i class="iconfont icon-shouye" @click='toIndex()'></i>
-    <i class="iconfont icon-wode" @click='toMine()'></i>
+    <i class="" @click='toIndex()'><img class="footer-img" src="/static/images/home.png" /></i>
+    <i class="" @click='toMine()'><img class="footer-img" src="/static/images/mine.png" /></i>
   </div>
 </template>
 
@@ -25,9 +25,14 @@ export default {
 
 <style lang="sass" scoped>
   i
-    display: inline-block
+    display: table-cell
+    vertical-align: middle
     width: 50%
-    font-size: 30px
+    font-size: 0
+  .footer-img
+    vertical-align: middle
+    width: 35px
+    height: 35px
   .footer
     position: fixed
     display: flex
