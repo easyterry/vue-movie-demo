@@ -6,9 +6,11 @@
     <i class="iconfont icon-guanbi" v-show='query' @click='deleteQuery()'></i>
   </div>
   <ul>
-    <li class="search-list" v-show='query' v-for='(item, index) in data' :key='index'>
-      <i class="iconfont icon-dianyingpiaoiocn"></i> {{item.title}}
-    </li>
+    <transition-group enter-active-class='animated flipInX' leave-active-class='animated fadeOutLeft'>
+      <li class="search-list" v-show='query' v-for='(item, index) in data' :key='index' @click='linkToSearch(item.id, data, index)'>
+        <i class="iconfont icon-dianyingpiaoiocn"></i> {{item.title}}
+      </li>
+    </transition-group>
   </ul>
   <p class="hotSearch" v-show='!query'>热门搜索</p>
   <ul>
@@ -19,7 +21,7 @@
   <home-swiper></home-swiper>
   <div class="main-container">
     <h2>{{title}}</h2>
-    <div class='fade movies-container'>
+    <div class='animated fadeIn movies-container'>
       <div class="movies-layout" v-for='(item, index) in subjects' :key='index'>
         <router-link :to="{ name:'Movie', params: {id: item.id, result: subjects, idx: index} }">
           <img v-lazy="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
@@ -82,10 +84,20 @@ export default {
           name: 'Movie',
           params: {
             id: index,
-            result: subjects
+            result: subjects,
           }
         })
       }
+    },
+    linkToSearch(id, result, index) {
+      this.$router.push({
+        name: 'Movie',
+        params: {
+          id: id,
+          result: result,
+          idx: index,
+        }
+      })
     },
   },
   watch: {
@@ -94,7 +106,6 @@ export default {
         const data = res.data.subjects;
         this.data = data;
         console.log(res.data);
-        console.log(data);
       })
     }
   },
