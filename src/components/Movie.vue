@@ -1,16 +1,16 @@
 <template>
 <div v-if='result'>
-  <h2>{{result[id].title}}</h2>
-  <img :src="imgUrl + result[id].images.small.substring( 7 )" alt="">
+  <h2>{{result[idx].title}}</h2>
+  <img :src="imgUrl + result[idx].images.small.substring( 7 )" alt="">
   <div class="summary">
-    <span class="intro-title">{{result[id].title}}剧情简介</span>
+    <span class="intro-title">{{result[idx].title}}剧情简介</span>
   </div>
   <div>
     <span class="intro-title">影人</span>
     <div class="avatars-info">
       <div class="avatar-box" v-for='(item, index) of result' :key='index' v-if='index <= 2'>
-       <img class="sculpture" :src="imgUrl + result[id].casts[index].avatars.medium.substring( 7 )" alt="">
-        <span class="avatar-name">{{result[id].casts[index].name}}</span>
+       <img class="sculpture" :src="imgUrl + result[idx].casts[index].avatars.medium.substring( 7 )" alt="">
+        <span class="avatar-name">{{result[idx].casts[index].name}}</span>
         <span class="role">演员</span>
       </div>
     </div>
@@ -34,6 +34,7 @@ export default {
     return {
       id: this.$route.params.id,
       result: this.$route.params.result,
+      idx: this.$route.params.idx,
       imgUrl: 'https://images.weserv.nl/?url=',
     }
   },

@@ -3,7 +3,7 @@
   <h2>即将上映</h2>
   <div class="movies-container">
     <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
-      <router-link :to="{ name:'Movie', params: {id:index, result: subjects} }">
+      <router-link :to="{ name:'Movie', params: {id:item.id, result:subjects, idx:index} }">
         <img v-lazy="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       </router-link>
       <span>{{item.title}}</span>
@@ -20,14 +20,16 @@ export default {
   components: {
     StarsNum
   },
-  data() {
+  created() {
     this.$http.get('/api/movie/coming_soon?count=9').then((res) => {
       this.subjects = res.data.subjects
     })
+  },
+  data() {
     return {
       subjects: ''
     }
-  }
+  },
 }
 </script>
 

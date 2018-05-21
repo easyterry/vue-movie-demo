@@ -3,7 +3,7 @@
   <h2>Top250</h2>
   <div class="movies-container">
     <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
-      <router-link :to="{ name: 'Movie', params: {id:index, result:subjects} }">
+      <router-link :to="{ name: 'Movie', params: {id:item.id, result:subjects, idx:index} }">
         <img v-lazy="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       </router-link>
       <span>{{item.title}}</span>
@@ -23,14 +23,15 @@ export default {
     BackIcon
   },
   data() {
-    this.$http.get('/api/movie/top250?count=9').then((res) => {
-      this.subjects = res.data.subjects
-      console.log(res)
-    })
     return {
       subjects: '',
     }
-  }
+  },
+  created(){
+    this.$http.get('/api/movie/top250?count=9').then((res) => {
+      this.subjects = res.data.subjects
+    })
+  },
 }
 </script>
 
