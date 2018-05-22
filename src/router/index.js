@@ -7,12 +7,12 @@ import HelloWorld from '@/components/HelloWorld'
 import Movie from '@/components/Movie'
 import Login from '@/components/Login'
 import Shop from '@/components/Shop'
+import Performer from '@/components/Performer'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  base:'./',
   routes: [{
     path: '/',
     component: Index,
@@ -28,7 +28,7 @@ export default new Router({
     }, {
       name: 'Movie',
       path: '/Movie/:id',
-      component: Movie
+      component: Movie,
     }]
   }, {
     name: 'Login',
@@ -41,5 +41,9 @@ export default new Router({
     name:'Shop',
     path:'/Shop',
     component: Shop
+  },{
+    name:'Performer',
+    path:'/Performer/:id',
+    component:Performer
   }]
 })

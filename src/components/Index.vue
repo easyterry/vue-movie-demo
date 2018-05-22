@@ -6,7 +6,7 @@
     <router-link to='/Main'>即将上映</router-link>
   </div>
   <div class="">
-    <transition name='fade' mode='out-in'>
+    <transition enter-active-class='animated fadeIn'>
       <router-view>
       </router-view>
     </transition>
@@ -36,11 +36,4 @@ a
   height: 50px
 .router-link-exact-active
   color: #00a0e9
-.fade-enter-active,
-.fade-leave-active
-  transition: .5s
-.fade-enter,
-.fade-leave-to
-  opacity: 0
-
 </style>

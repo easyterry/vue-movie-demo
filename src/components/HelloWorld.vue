@@ -23,8 +23,8 @@
     <h2>{{title}}</h2>
     <div class='animated fadeIn movies-container'>
       <div class="movies-layout" v-for='(item, index) in subjects' :key='index'>
-        <router-link :to="{ name:'Movie', params: {id: item.id, result: subjects, idx: index} }">
-          <img v-lazy="'https://images.weserv.nl/?url='+(item.images.large.substring( 7 ))" class="img-size">
+        <router-link :to="{ name:'Movie', params: {id: item.id } }">
+          <img v-lazy="imgUrl+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <span class="intro-title">{{item.title}}</span>
         <span class="rating">评分 {{item.rating.average.toFixed(1)}}</span>
@@ -57,10 +57,11 @@ export default {
       query: '',
       idx: null,
       data: '',
+      imgUrl:'https://images.weserv.nl/?url='
     }
   },
   created() {
-    this.$http.get('api/movie/in_theaters?count=9').then((res) => {
+    this.$http.get('/api/movie/in_theaters?count=9').then((res) => {
       var result = res.data
       this.subjects = result.subjects
       console.log(result)
