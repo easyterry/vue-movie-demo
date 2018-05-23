@@ -13,37 +13,45 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  base: './',
   routes: [{
     path: '/',
     component: Index,
     children: [{
       path: '/',
-      component: HelloWorld
+      // component: HelloWorld
+      component: resolve => require(['@/components/HelloWorld'], resolve)
     }, {
       path: '/Second',
-      component: Second
+      // component: Second
+      component: resolve => require(['@/components/Second'], resolve)
     }, {
       path: '/Main',
-      component: Main
+      // component: Main
+      component: resolve => require(['@/components/Main'], resolve)
     }, {
       name: 'Movie',
       path: '/Movie/:id',
-      component: Movie,
+      // component: Movie,
+      component: resolve => require(['@/components/Movie'], resolve)
     }]
   }, {
     name: 'Login',
     path: '/Login',
-    component: Login,
+    // component: Login,
+    component: resolve => require(['@/components/Login'], resolve),
     meta: {
       keepAlive: true
     }
-  },{
-    name:'Shop',
-    path:'/Shop',
-    component: Shop
-  },{
-    name:'Performer',
-    path:'/Performer/:id',
-    component:Performer
+  }, {
+    name: 'Shop',
+    path: '/Shop',
+    // component: Shop
+    component: resolve => require(['@/components/Shop'], resolve)
+  }, {
+    name: 'Performer',
+    path: '/Performer/:id',
+    // component:Performer
+    component: resolve => require(['@/components/Performer'], resolve)
   }]
 })
