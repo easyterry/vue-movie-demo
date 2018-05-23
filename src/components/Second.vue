@@ -51,6 +51,7 @@ span
   line-height: 1.5
 .container
   position: relative
+  margin-bottom: 50px
 .movies-container
   display: flex
   flex-direction: row

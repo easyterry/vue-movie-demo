@@ -32,7 +32,6 @@
       </div>
     </div>
   </div>
-  <mask-box></mask-box>
 </div>
 </template>
 
@@ -40,14 +39,16 @@
 import HomeSwiper from '@/components/Swiper'
 import StarsNum from '@/components/Stars'
 import FooterBar from '@/components/Footer'
-import MaskBox from '@/components/MaskBox'
+
+import {
+  Message
+} from 'element-ui'
 export default {
   name: 'HelloWorld',
   components: {
     HomeSwiper,
     StarsNum,
     FooterBar,
-    MaskBox,
   },
   data() {
     return {
@@ -57,7 +58,7 @@ export default {
       query: '',
       idx: null,
       data: '',
-      imgUrl:'https://images.weserv.nl/?url='
+      imgUrl: 'https://images.weserv.nl/?url='
     }
   },
   created() {
@@ -77,9 +78,12 @@ export default {
       this.idx = ''
     },
     linkToMovie(index, subjects) {
-      console.log(index)
       if (index == null) {
-        alert('请输入要搜索的内容！')
+        Message({
+          message: '请输入要搜索的内容',
+          type: 'warning',
+          showClose: true,
+        })
       } else {
         this.$router.push({
           name: 'Movie',

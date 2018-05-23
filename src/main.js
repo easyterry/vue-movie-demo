@@ -10,11 +10,14 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyLoad from 'vue-lazyload'
 import FastClick from 'fastclick'
 import 'swiper/dist/css/swiper.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyLoad)
+Vue.use(ElementUI)
 FastClick.attach(document.body);
 
 export default new Vuex.Store({

@@ -2,7 +2,7 @@
 <div v-if='result'>
   <h2>{{result.title}}</h2>
   <img :src="imgUrl + result.images.small.substring( 7 )" alt="">
-  <div class="summary" :class="{open: status}" >
+  <div class="summary" :class="{open: status}">
     <span class="intro-title">{{result.title}}剧情简介</span>
     <p class="summary-info" :class="{after: !status}">{{result.summary}}</p>
     <span class="spread" @click='spreadContent()' v-if='status == false'>(展开)
@@ -31,6 +31,9 @@
 </template>
 
 <script>
+import {
+  Loading
+} from 'element-ui'
 export default {
   name: 'Movie',
   data() {
@@ -41,12 +44,22 @@ export default {
       status: false,
     }
   },
+  beforeCreate() {
+    Loading.service({
+      text: '内容呈现中...',
+      spinner: 'el-icon-loading',
+      lock: true,
+    });
+  },
   created() {
     this.$http.get('/api/movie/subject/' + this.$route.params.id).then(res => {
       var result = res.data;
       this.result = result;
       console.log(this.result);
     })
+  },
+  mounted(){
+    Loading.service().close();
   },
   methods: {
     spreadContent() {
