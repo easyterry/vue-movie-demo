@@ -1,7 +1,17 @@
 <template>
 <div v-if='result'>
   <h2>{{result.title}}</h2>
+  <h3>{{result.original_title}}</h3>
   <img :src="imgUrl + result.images.small.substring( 7 )" alt="">
+  <div class="details-info">
+    <stars-num :stars="result.rating.stars"></stars-num>
+    <span class="rating-count">{{result.ratings_count}}人评价</span>
+  </div>
+  <div class="intro-box">
+    <span v-for='(item, index) in result.genres' class="intro-info">{{item}} / </span>
+    <span v-for='(item, index) in result.directors' class="intro-info">{{item.name}}(导演) / </span>
+    <span v-for='(item, index) in result.casts' class="intro-info">{{item.name}} / </span>
+  </div>
   <div class="summary" :class="{open: status}">
     <span class="intro-title">{{result.title}}剧情简介</span>
     <p class="summary-info" :class="{after: !status}">{{result.summary}}</p>
@@ -31,11 +41,15 @@
 </template>
 
 <script>
+import StarsNum from '@/components/Stars'
 import {
   Loading
 } from 'element-ui'
 export default {
   name: 'Movie',
+  components: {
+    StarsNum
+  },
   data() {
     return {
       id: Number,
@@ -49,6 +63,7 @@ export default {
       text: '内容呈现中...',
       spinner: 'el-icon-loading',
       lock: true,
+      rating: null,
     });
   },
   created() {
@@ -58,7 +73,7 @@ export default {
       console.log(this.result);
     })
   },
-  mounted(){
+  mounted() {
     Loading.service().close();
   },
   methods: {
@@ -74,6 +89,27 @@ export default {
     color: #007722
   a
     text-decoration: none
+  .details-info
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    font-size: 0
+    span
+      margin-left: 10px
+      color: #999
+      font-size: 14px
+      line-height: 14px
+  .rating-count
+    margin-top: 5px
+  .intro-box
+    width: 270px
+    text-align: justify
+    margin: 0 auto
+    margin-top: 10px
+  .intro-info
+    font-size: 14px
+    color: #333
   .summary-info
     position: relative
     margin-top: 10px !important

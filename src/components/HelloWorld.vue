@@ -23,7 +23,7 @@
     <h2>{{title}}</h2>
     <div class='animated fadeIn movies-container'>
       <div class="movies-layout" v-for='(item, index) in subjects' :key='index'>
-        <router-link :to="{ name:'Movie', params: {id: item.id } }">
+        <router-link :to="{ name:'Movie', params: { id: item.id } }">
           <img v-lazy="imgUrl+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <span class="intro-title">{{item.title}}</span>
@@ -159,6 +159,8 @@ i
   &.icon-sousuo
     font-size: 20px
   &.icon-guanbi
+    position: absolute
+    right: 10px
     font-size: 14px
   &.icon-dianyingpiaoiocn
     display: inline-block
@@ -194,11 +196,12 @@ i
 .ipt-container
   box-sizing: border-box
   display: flex
+  position: relative
   align-items: center
-  width: 70%
+  width: 75%
   margin: 0 auto
   margin-top: 15px
-  padding-left: 10px
+  padding-left: 2%
   border-radius: 5px
   background-color: #eee
 .main-container

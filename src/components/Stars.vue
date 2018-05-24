@@ -1,5 +1,4 @@
 <template lang="html">
-  <div>
     <span class="stars-container">
       <span v-for='(item, index) in starsArr'
             :key='index'
@@ -7,7 +6,6 @@
             class="star-true"></span>
       <span v-else="starsArr[index] == 0" class="star-false"></span>
     </span>
-  </div>
 </template>
 
 <script>
