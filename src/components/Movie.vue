@@ -3,8 +3,8 @@
   <h2>{{result.title}}</h2>
   <h3>{{result.original_title}}</h3>
   <img :src="imgUrl + result.images.small.substring( 7 )" alt="">
+  <stars-num :stars="result.rating.stars" :average="result.rating.average"></stars-num>
   <div class="details-info">
-    <stars-num :stars="result.rating.stars"></stars-num>
     <span class="rating-count">{{result.ratings_count}}人评价</span>
   </div>
   <div class="intro-box">
@@ -95,13 +95,14 @@ export default {
     justify-content: center
     align-items: center
     font-size: 0
+    margin-top: 5px
     span
       margin-left: 10px
       color: #999
       font-size: 14px
       line-height: 14px
   .rating-count
-    margin-top: 5px
+    display: block
   .intro-box
     width: 270px
     text-align: justify

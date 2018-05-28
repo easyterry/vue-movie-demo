@@ -7,8 +7,7 @@
         <img v-lazy="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       </router-link>
       <span>{{item.title}}</span>
-      <span>评分 {{item.rating.average.toFixed(1)}}</span>
-      <stars-num v-bind:stars.sysnc="item.rating.stars"></stars-num>
+      <stars-num :stars="item.rating.stars" :average="item.rating.average"></stars-num>
     </div>
   </div>
 </div>

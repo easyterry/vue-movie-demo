@@ -27,8 +27,7 @@
           <img v-lazy="imgUrl+(item.images.large.substring( 7 ))" class="img-size">
         </router-link>
         <span class="intro-title">{{item.title}}</span>
-        <span class="rating">评分 {{item.rating.average.toFixed(1)}}</span>
-        <stars-num :stars.sysnc="item.rating.stars"></stars-num>
+        <stars-num :stars="item.rating.stars" :average="item.rating.average"></stars-num>
       </div>
     </div>
   </div>

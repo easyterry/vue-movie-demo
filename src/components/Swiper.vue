@@ -19,29 +19,32 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         },
-        loop:true
+        loop: true
       },
-      swiperList:[{
-        id:'001',
-        imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/272344.jpg'
-      },{
-        id:'002',
-        imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/277409.jpg'
-      },{
-        id:'003',
-        imgUrl:'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/273112.jpg'
+      swiperList: [{
+        id: '001',
+        imgUrl: 'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/272344.jpg'
+      }, {
+        id: '002',
+        imgUrl: 'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/277409.jpg'
+      }, {
+        id: '003',
+        imgUrl: 'https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/273112.jpg'
       }]
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.wrapper >>> .swiper-pagination-bullet-active
-  background: #fff
-.swiper-box
-  margin-top: 20px
-img
-  height: 176px
-  width: 100%
+<style scoped>
+.wrapper >>> .swiper-pagination-bullet-active{
+    background: #fff;
+}
+.swiper-box{
+    margin-top: 20px;
+}
+img{
+  height: 176px;
+  width: 100%;
+}
 </style>
