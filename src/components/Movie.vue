@@ -1,5 +1,5 @@
 <template>
-<div v-if='result'>
+<div class="movies-container" v-if='result'>
   <h2>{{result.title}}</h2>
   <h3>{{result.original_title}}</h3>
   <img :src="imgUrl + result.images.small.substring( 7 )" alt="">
@@ -71,7 +71,7 @@ export default {
       var result = res.data;
       this.result = result;
       console.log(this.result);
-    })
+    });
   },
   mounted() {
     Loading.service().close();
@@ -89,6 +89,8 @@ export default {
     color: #007722
   a
     text-decoration: none
+  .movies-container
+    margin-bottom: 75px
   .details-info
     display: flex
     flex-direction: row

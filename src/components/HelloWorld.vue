@@ -217,7 +217,6 @@ i
 .movies-layout
   display: flex
   flex-direction: column
-  justify-content: center
   margin-bottom: 15px
 .letter>span:nth-child(1)
   display: inline-block

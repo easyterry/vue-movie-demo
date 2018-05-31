@@ -29,19 +29,20 @@ export default {
     vertical-align: middle
     width: 50%
     font-size: 0
-  .footer-img
-    vertical-align: middle
-    width: 35px
-    height: 35px
   .footer
     position: fixed
     display: flex
     flex-direction: row
     bottom: 0
     left: 0
+    z-index: 999
     width: 100%
     height: 55px
     line-height: 55px
     border-top: 1px solid #eee
     background-color: #fff
+  .footer-img
+    vertical-align: middle
+    width: 35px
+    height: 35px
 </style>
