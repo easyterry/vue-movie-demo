@@ -4,10 +4,10 @@
       <back-icon style="margin-top:10px;"></back-icon>
       <div class="login">
         <span class="login-title">登录</span>
-        <form class="" action="" method="post">
-          <input type="text" placeholder='用户名'>
-          <input type="password" placeholder='密码'>
-          <button type="submit" class="login-btn">确认登录</button>
+        <form>
+          <input type="text" placeholder='用户名' v-model='username'>
+          <input type="password" placeholder='密码' v-model='pswd'>
+          <button type="button" class="login-btn" @click='handleDataClick(username, pswd)'>确认登录</button>
         </form>
       </div>
       <span></span>
@@ -17,6 +17,9 @@
 
 <script>
 import BackIcon from '@/components/Back'
+import {
+  mapState
+} from 'vuex'
 export default {
   name: 'Login',
   components: {
@@ -24,11 +27,17 @@ export default {
   },
   data() {
     return {
-
+      username: '',
+      pswd:'',
     }
   },
   methods: {
-
+    handleDataClick(username, pswd) {
+      this.$store.dispatch('changeData', username, pswd);
+      this.$router.push({
+        name:'Personal'
+      })
+    }
   }
 }
 </script>

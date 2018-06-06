@@ -7,7 +7,7 @@
   </div>
   <ul>
     <transition-group enter-active-class='animated flipInX' leave-active-class='animated fadeOutLeft'>
-      <li class="search-list" v-show='query' v-for='(item, index) in data' :key='index' @click='linkToSearch(item.id, data, index)'>
+      <li class="search-list" v-show='query' v-for='(item, index) in data' :key='index' @click='linkToSearch(item.id)'>
         <i class="iconfont icon-dianyingpiaoiocn"></i> {{item.title}}
       </li>
     </transition-group>
@@ -88,18 +88,15 @@ export default {
           name: 'Movie',
           params: {
             id: index,
-            result: subjects,
           }
         })
       }
     },
-    linkToSearch(id, result, index) {
+    linkToSearch(id) {
       this.$router.push({
         name: 'Movie',
         params: {
           id: id,
-          result: result,
-          idx: index,
         }
       })
     },

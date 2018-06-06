@@ -20,10 +20,6 @@ Vue.use(VueLazyLoad)
 Vue.use(ElementUI)
 FastClick.attach(document.body);
 
-export default new Vuex.Store({
-
-})
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

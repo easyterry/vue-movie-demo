@@ -7,7 +7,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Movie from '@/components/Movie'
 import Login from '@/components/Login'
 import Shop from '@/components/Shop'
-import Performer from '@/components/Performer'
+import Personal from '@/components/Personal'
 
 Vue.use(Router)
 
@@ -49,9 +49,8 @@ export default new Router({
     // component: Shop
     component: resolve => require(['@/components/Shop'], resolve)
   }, {
-    name: 'Performer',
-    path: '/Performer/:id',
-    // component:Performer
-    component: resolve => require(['@/components/Performer'], resolve)
+    name: 'Personal',
+    path: '/Personal',
+    component: resolve => require(['@/components/Personal'], resolve)
   }]
 })

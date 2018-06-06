@@ -1,12 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 Vue.use(Vuex)
 
-const state = {
-  count: 44
-}
-
 export default new Vuex.Store({
-  state
+  state: {
+    username: '',
+    pswd: '',
+  },
+  actions: {
+    changeData(name, username, pswd) {
+      name.commit('changeData', username, pswd)
+    }
+  },
+  mutations: {
+    changeData(state, username, pswd) {
+      state.username = username,
+        state.pswd = pswd
+    }
+  }
 })

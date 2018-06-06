@@ -30,17 +30,17 @@
   </div>
   <div>
     <span class="intro-title">周边</span>
-    <router-link :to="{ name: 'Shop' }">
-      <div class="product-box">
-        <img src="" alt="">
-        <span></span>
-      </div>
-    </router-link>
+    <div class="product-box">
+      {{this.$store.state.username}}
+    </div>
   </div>
 </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import StarsNum from '@/components/Stars'
 import {
   Loading
@@ -68,13 +68,11 @@ export default {
   },
   created() {
     this.$http.get('/api/movie/subject/' + this.$route.params.id).then(res => {
+      Loading.service().close();
       var result = res.data;
       this.result = result;
       console.log(this.result);
     });
-  },
-  mounted() {
-    Loading.service().close();
   },
   methods: {
     spreadContent() {
