@@ -12,12 +12,15 @@ import FastClick from 'fastclick'
 import 'swiper/dist/css/swiper.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyLoad)
 Vue.use(ElementUI)
+Vue.use(MintUI)
 FastClick.attach(document.body);
 
 /* eslint-disable no-new */

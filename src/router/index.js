@@ -8,6 +8,7 @@ import Movie from '@/components/Movie'
 import Login from '@/components/Login'
 import Shop from '@/components/Shop'
 import Personal from '@/components/Personal'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -24,11 +25,17 @@ export default new Router({
     }, {
       path: '/Second',
       // component: Second
-      component: resolve => require(['@/components/Second'], resolve)
+      component: resolve => require(['@/components/Second'], resolve),
+      meta: {
+        keepAlive: true
+      },
     }, {
       path: '/Main',
       // component: Main
-      component: resolve => require(['@/components/Main'], resolve)
+      component: resolve => require(['@/components/Main'], resolve),
+      meta: {
+        keepAlive: true
+      },
     }, {
       name: 'Movie',
       path: '/Movie/:id',
@@ -40,6 +47,16 @@ export default new Router({
     path: '/Login',
     // component: Login,
     component: resolve => require(['@/components/Login'], resolve),
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLogin == 0) {
+        console.log('未登录');
+        next();
+      } else {
+        next({
+          path: '/Personal'
+        })
+      }
+    },
     meta: {
       keepAlive: true
     }

@@ -3,19 +3,20 @@
     <div class="header">
       <back-icon style="margin-top:10px;"></back-icon>
       <div class="login">
-        <span class="login-title">登录</span>
+        <span class="login-title" @click="showPicker = !showPicker">登录</span>
         <form>
           <input type="text" placeholder='用户名' v-model='username'>
           <input type="password" placeholder='密码' v-model='pswd'>
           <button type="button" class="login-btn" @click='handleDataClick(username, pswd)'>确认登录</button>
         </form>
       </div>
-      <span></span>
+      <picker-component v-if="showPicker"></picker-component>
     </div>
   </div>
 </template>
 
 <script>
+import PickerComponent from '@/components/Picker'
 import BackIcon from '@/components/Back'
 import {
   mapState
@@ -23,12 +24,14 @@ import {
 export default {
   name: 'Login',
   components: {
-    BackIcon
+    BackIcon,
+    PickerComponent,
   },
   data() {
     return {
       username: '',
       pswd:'',
+      showPicker: false
     }
   },
   methods: {
@@ -36,7 +39,8 @@ export default {
       this.$store.dispatch('changeData', username, pswd);
       this.$router.push({
         name:'Personal'
-      })
+      });
+      localStorage.setItem('username', username)
     }
   }
 }
@@ -83,5 +87,6 @@ export default {
     border: none
     font-size: 18px
     color: #fff
-
+  /deep/.mint-popup-bottom
+    width: 100%
 </style>
