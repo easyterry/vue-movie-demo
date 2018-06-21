@@ -52,7 +52,7 @@ export default {
   },
   data() {
     return {
-      id: Number,
+      id: this.$route.params.id,
       result: '',
       imgUrl: 'https://images.weserv.nl/?url=',
       status: false,

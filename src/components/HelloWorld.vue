@@ -1,7 +1,7 @@
 <template>
 <div class="hello">
   <div class="ipt-container">
-    <i class="iconfont icon-sousuo" @click='linkToMovie(idx, subjects)'></i>
+    <i class="iconfont icon-sousuo" @click='linkToMovie(idx, query)'></i>
     <input style='display:block' class='search-ipt' type="text" v-model='query' placeholder='搜索'>
     <i class="iconfont icon-guanbi" v-show='query' @click='deleteQuery()'></i>
   </div>
@@ -76,18 +76,33 @@ export default {
       this.query = ''
       this.idx = ''
     },
-    linkToMovie(index, subjects) {
-      if (index == null) {
+    linkToMovie(index, query) {
+      let queryId = [];
+      if (query == '') {
         Message({
           message: '请输入要搜索的内容',
           type: 'warning',
           showClose: true,
         })
       } else {
-        this.$router.push({
-          name: 'Movie',
-          params: {
-            id: index,
+        this.$http.get('api/movie/search?q=' + query).then(res => {
+          for (var key in res.data.subjects) {
+            if (res.data.subjects[key].title == query) {
+              queryId.push(key)
+              this.$router.push({
+                name: 'Movie',
+                params: {
+                  id: res.data.subjects[key].id
+                }
+              })
+            }
+          }
+          if (queryId.length == 0) {
+            Message({
+              message: '抱歉！未查询到匹配的内容',
+              type: 'warning',
+              showClose: true,
+            })
           }
         })
       }

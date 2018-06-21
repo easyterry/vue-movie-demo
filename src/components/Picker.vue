@@ -1,27 +1,33 @@
 <template lang="html">
-    <mt-popup position="bottom" v-model="showPop">
-      <mt-picker :slots="slots" @change="onValuesChange">
-      </mt-picker>
-    </mt-popup>
+  <div>
+    <div @click="openPicker()"></div>
+  <mt-datetime-picker
+      type="date"
+      ref="picker"
+      year-format="{value} 年"
+      month-format="{value} 月"
+      date-format="{value} 日"
+      v-if="showDate"
+      >
+    </mt-datetime-picker>
+    </div>
 </template>
 
 <script>
-import { Picker, Popup} from 'mint-ui'
+import {
+  DatetimePicker
+} from 'mint-ui'
 import Vue from 'vue'
-Vue.component(Picker.name, Picker)
-Vue.component(Popup.name, Popup);
+Vue.component(DatetimePicker.name, DatetimePicker)
 export default {
   data() {
     return {
-      showPop: true,
-      slots: [{
-        values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06'],
-      }]
-    };
+      showDate: true
+    }
   },
   methods: {
-    onValuesChange(picker, values) {
-      console.log(values);
+    openPicker() {
+      this.$refs.picker.open()
     }
   }
 }

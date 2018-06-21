@@ -5,12 +5,14 @@
       <div class="login">
         <span class="login-title" @click="showPicker = !showPicker">登录</span>
         <form>
-          <input type="text" placeholder='用户名' v-model='username'>
-          <input type="password" placeholder='密码' v-model='pswd'>
+          <input type="text" placeholder='用户名' v-model='username' v-validate="'required|max:11'" name="username" >
+          <span style="display:block" v-show="errors.has('username')">{{ errors.first('username') }}</span>
+          <input type="password" placeholder='密码' v-model='pswd' v-validate="'required'" name="password">
+          <span style="display:block" v-show="errors.has('password')">{{ errors.first('password') }}</span>
           <button type="button" class="login-btn" @click='handleDataClick(username, pswd)'>确认登录</button>
         </form>
       </div>
-      <picker-component v-if="showPicker"></picker-component>
+      <picker-component :v-show="showPicker"></picker-component>
     </div>
   </div>
 </template>
@@ -18,6 +20,9 @@
 <script>
 import PickerComponent from '@/components/Picker'
 import BackIcon from '@/components/Back'
+import VeeValidate, {
+  Validator
+} from 'vee-validate';
 import {
   mapState
 } from 'vuex'
@@ -30,18 +35,20 @@ export default {
   data() {
     return {
       username: '',
-      pswd:'',
-      showPicker: false
+      pswd: '',
+      showPicker: false,
     }
   },
   methods: {
     handleDataClick(username, pswd) {
       this.$store.dispatch('changeData', username, pswd);
-      this.$router.push({
-        name:'Personal'
-      });
-      localStorage.setItem('username', username)
-    }
+      if(this.username != '' && this.pswd != ''){
+        this.$router.push({
+          name: 'Personal'
+        });
+        localStorage.setItem('username', username)
+      }
+    },
   }
 }
 </script>
