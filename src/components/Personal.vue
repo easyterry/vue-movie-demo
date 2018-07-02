@@ -8,7 +8,8 @@
         <span class="username">{{this.$store.state.username}}</span>
       </div>
     </div>
-    <footer-component></footer-component>
+    <footer-component>
+    </footer-component>
   </div>
 </template>
 
@@ -36,6 +37,7 @@ export default {
     signOut() {
       this.$store.dispatch('changeData', '');
       localStorage.setItem('username', '');
+      localStorage.setItem('password', '');
       this.$router.push({
         path: '/Login'
       })

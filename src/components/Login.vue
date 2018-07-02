@@ -3,16 +3,15 @@
     <div class="header">
       <back-icon style="margin-top:10px;"></back-icon>
       <div class="login">
-        <span class="login-title" @click="showPicker = !showPicker">登录</span>
+        <span class="login-title">登录</span>
         <form>
           <input type="text" placeholder='用户名' v-model='username' v-validate="'required|max:11'" name="username" >
           <span style="display:block" v-show="errors.has('username')">{{ errors.first('username') }}</span>
           <input type="password" placeholder='密码' v-model='pswd' v-validate="'required'" name="password">
           <span style="display:block" v-show="errors.has('password')">{{ errors.first('password') }}</span>
-          <button type="button" class="login-btn" @click='handleDataClick(username, pswd)'>确认登录</button>
+          <button type="button" class="login-btn" @click='handleSignClick(username, pswd)'>确认登录</button>
         </form>
       </div>
-      <picker-component :v-show="showPicker"></picker-component>
     </div>
   </div>
 </template>
@@ -36,19 +35,30 @@ export default {
     return {
       username: '',
       pswd: '',
-      showPicker: false,
     }
   },
   methods: {
-    handleDataClick(username, pswd) {
+    handleSignClick(username, pswd) {
+      // 保存数据到Vuex
       this.$store.dispatch('changeData', username, pswd);
-      if(this.username != '' && this.pswd != ''){
+      if (this.username != '' && this.pswd != '') {
         this.$router.push({
           name: 'Personal'
         });
-        localStorage.setItem('username', username)
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', pswd)
       }
     },
+    checkLocal() {
+      if(localStorage.username != ''){
+        this.username = localStorage.getItem('username')
+        this.pswd = localStorage.getItem('password')
+        this.handleSignClick(this.username, this.pswd);
+      }
+    }
+  },
+  mounted() {
+    this.checkLocal();
   }
 }
 </script>

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     isLogin: false,
   },
   actions: {
-    changeData(name, username, pswd, isLogin) {
+    changeData(name, username, pswd) {
       name.commit('changeData', username, pswd)
     }
   },
