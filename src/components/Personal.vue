@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     getLocal() {
-      if (this.$store.state.username == '') {
+      if (this.$store.state.username == '' && localStorage.getItem('username') != '') {
         localStorage.getItem('username');
         this.$store.dispatch('changeData', localStorage.getItem('username'));
       }

@@ -48,7 +48,6 @@ export default new Router({
     component: resolve => require(['@/components/Login'], resolve),
     beforeEnter: (to, from, next) => {
       if (store.state.isLogin == 0) {
-        console.log('未登录');
         next();
       } else {
         next({

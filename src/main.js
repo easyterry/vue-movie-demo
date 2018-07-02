@@ -14,12 +14,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-import VeeValidate, {
-  Validator
-} from 'vee-validate'
-import zh_CN from 'vee-validate/dist/locale/zh_CN'
-
-Validator.localize('zh_CN', zh_CN);
+import './validate'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
@@ -28,7 +23,6 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyLoad)
 Vue.use(ElementUI)
 Vue.use(MintUI)
-Vue.use(VeeValidate)
 
 FastClick.attach(document.body);
 
