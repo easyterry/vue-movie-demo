@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div>
     <div class="header">
       <back-icon style="margin-top:10px;"></back-icon>
       <div class="login">
@@ -7,9 +7,11 @@
         <form>
           <input type="text" placeholder='用户名' v-model='username' v-validate="'required|mobile'" name="username" >
           <span style="display:block" v-show="errors.has('username')">{{ errors.first('username') }}</span>
+          <input type="text" placeholder='身份证' v-model='identify' v-validate="'required|id'" maxlength="18" name="identify">
+          <span style="display:block" v-show="errors.has('identify')">{{ errors.first('identify') }}</span>
           <input type="password" placeholder='密码' v-model='pswd' v-validate="'required'" name="password">
           <span style="display:block" v-show="errors.has('password')">{{ errors.first('password') }}</span>
-          <button type="button" class="login-btn" @click='handleSignClick(username, pswd)'>确认登录</button>
+          <button type="button" class="login-btn" @click.stop='handleSignClick(username, pswd)'>确认登录</button>
         </form>
       </div>
     </div>
@@ -33,13 +35,14 @@ export default {
     return {
       username: '',
       pswd: '',
+      identify: ''
     }
   },
   methods: {
     handleSignClick(username, pswd) {
       // 保存数据到Vuex
-      this.$store.dispatch('changeData', username, pswd);
       if (this.username != '' && this.pswd != '') {
+        this.$store.dispatch('changeData', username, pswd);
         this.$router.push({
           name: 'Personal'
         });
@@ -57,6 +60,14 @@ export default {
   },
   mounted() {
     this.checkLocal();
+  },
+  beforeRouteLeave(to, from, next) {
+    if (to.name == "Personal") {
+      var checkList = /^((13|14|15|17|18)[0-9]{1}\d{8})$/.test(this.username)
+      if (checkList) {
+        next();
+      }
+    }
   }
 }
 </script>

@@ -57,9 +57,6 @@ export default {
     width: 100%
     height: 187.5px
     margin-top: 50px
-    img
-      width: 100%
-      height: 100%
     .avatar-box
       position: absolute
       left: 50%
@@ -69,6 +66,7 @@ export default {
       transform: translate(-50%, -50%)
       .avatar
         display: inline-block
+        margin: 0 auto
         width: 75px
         height: 75px
         border-radius: 100px

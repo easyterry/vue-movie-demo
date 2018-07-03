@@ -47,7 +47,7 @@ export default new Router({
     // component: Login,
     component: resolve => require(['@/components/Login'], resolve),
     beforeEnter: (to, from, next) => {
-      if (store.state.isLogin == 0) {
+      if (store.state.isLogin == false) {
         next();
       } else {
         next({
@@ -66,6 +66,15 @@ export default new Router({
   }, {
     name: 'Personal',
     path: '/Personal',
-    component: resolve => require(['@/components/Personal'], resolve)
+    component: resolve => require(['@/components/Personal'], resolve),
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLogin != false) {
+        next();
+      } else {
+        next({
+          path: '/Login'
+        })
+      }
+    },
   }]
 })
