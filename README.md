@@ -1,6 +1,6 @@
 # vue-cli
 
-> A Vue.js project
+> 类豆瓣电影网站个人项目
 
 ## Build Setup
 
