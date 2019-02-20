@@ -4,7 +4,7 @@
   <div class="movies-container">
     <div class="movie-box" v-for='(item, index) in subjects' :key='index'>
       <router-link :to="{ name:'Movie', params: {id:item.id, result:subjects, idx:index} }">
-        <img v-lazy="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
+        <img :src="'https://images.weserv.nl/?url='+item.images.large.substring(7)">
       </router-link>
       <span>{{item.title}}</span>
       <stars-num :stars="item.rating.stars" :average="item.rating.average"></stars-num>
@@ -37,6 +37,7 @@ export default {
     width: 104px
     height: 162px
     margin: 0 auto
+    background-color: #eee
   h2
     color: #00a0e9
   span
