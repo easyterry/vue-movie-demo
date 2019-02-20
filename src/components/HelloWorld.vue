@@ -35,6 +35,8 @@
 </template>
 
 <script>
+let _ = require('lodash')
+
 import HomeSwiper from '@/components/Swiper'
 import StarsNum from '@/components/Stars'
 import FooterBar from '@/components/Footer'
@@ -61,6 +63,8 @@ export default {
     }
   },
   created() {
+    console.log(_.VERSION);
+
     this.$http.get('/api/movie/in_theaters?count=9').then((res) => {
       var result = res.data
       this.subjects = result.subjects
@@ -117,13 +121,13 @@ export default {
     },
   },
   watch: {
-    query() {
+    query: _.debounce(function() {
       this.$http.get('api/movie/search?q=' + this.query + '&count=5').then((res) => {
         const data = res.data.subjects;
         this.data = data;
         console.log(res.data);
       })
-    }
+    }, 350)
   },
 }
 </script>
