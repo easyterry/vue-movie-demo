@@ -19,7 +19,7 @@
     "fastclick": "^1.0.6",
     "jquery": "^3.3.1",
     "mint-ui": "^2.2.13",
-    "mongoose": "^5.4.14",
+    "mongoose": "^5.7.5",
     "node-sass": "^4.9.0",
     "vee-validate": "^2.1.0-beta.1",
     "vue": "^2.5.2",
